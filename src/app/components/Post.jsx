@@ -32,7 +32,7 @@ export default function Post({ post }) {
         height={300}
         width={600}
         alt={post.caption}
-        className="rounded mx-auto"
+        className="rounded mx-auto w-full"
       />
 
       {/* Buttons  */}

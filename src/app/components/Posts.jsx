@@ -21,7 +21,7 @@ export default function Posts() {
     },
   ];
   return (
-    <div className="max-w-2xl">
+    <div className="">
       {posts.map((post) => (
         <Post key={post.id} post={post} />
       ))}
