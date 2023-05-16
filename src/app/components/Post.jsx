@@ -4,7 +4,9 @@ import {
   BsBookmark,
   BsHeart,
   BsChatLeftDots,
+  BsEmojiSmile,
 } from "react-icons/bs";
+import PostCommentForm from "./PostCommentForm";
 
 export default function Post({ post }) {
   return (
@@ -43,10 +45,14 @@ export default function Post({ post }) {
       </div>
 
       {/* Caption */}
-      <div className="flex items-center px-4 mt-4 mb-3">
-        <p className="font-bold">{post.username}</p>
-        <p className="ml-3">{post.caption}</p>
-      </div>
+
+      <p className="p-4 truncate">
+        <span className="font-bold mr-2">{post.username}</span>
+        {post.caption}
+      </p>
+
+      {/* Post input comment */}
+      <PostCommentForm />
     </div>
   );
 }
