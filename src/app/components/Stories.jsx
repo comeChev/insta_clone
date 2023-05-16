@@ -17,12 +17,12 @@ export default function Stories() {
       };
     });
     setStoryUsers(storyUsers);
-    console.log(storyUsers);
   }, []);
 
   return (
-    <ul className="flex justify-center items-center  mx-auto p-6 mt-8 space-x-4 bg-white rounded overflow-scroll hide-scrollbar">
-      {storyUsers && storyUsers.map((user) => <Story user={user} />)}
+    <ul className="flex justify-center items-center mx-auto p-6 space-x-4 bg-white rounded overflow-scroll hide-scrollbar">
+      {storyUsers &&
+        storyUsers.map((user) => <Story key={user.id} user={user} />)}
     </ul>
   );
 }
