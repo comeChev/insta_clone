@@ -1,4 +1,9 @@
 import Image from "next/image";
+import {
+  AiFillHome,
+  AiOutlinePlusCircle,
+  AiOutlineSearch,
+} from "react-icons/ai";
 
 export default function Header() {
   return (
@@ -22,8 +27,23 @@ export default function Header() {
           className="lg:hidden object-contain h-10 w-10 cursor-pointer"
         />
       </div>
+
+      {/* Search input */}
+      <div className="flex relative items-center">
+        <AiOutlineSearch className="absolute ml-2 text-xl text-gray-500" />
+        <input
+          type="text"
+          placeholder="Search"
+          className="text-black pl-8 bg-gray-50 border-gray-500 text-sm rounded focus:ring-black focus:border-black"
+        />
+      </div>
+
       {/* Menu right side */}
-      <div className="">Instagram</div>
+      <div className="flex items-center">
+        <AiFillHome className="text-xl" />
+        <AiOutlinePlusCircle className="text-xl" />
+        Instagram
+      </div>
     </div>
   );
 }
