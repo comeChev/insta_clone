@@ -39,10 +39,16 @@ export default function Header() {
       </div>
 
       {/* Menu right side */}
-      <div className="flex items-center">
-        <AiFillHome className="text-xl" />
-        <AiOutlinePlusCircle className="text-xl" />
-        Instagram
+      <div className="flex items-center gap-4">
+        <AiFillHome className="hidden md:flex text-xl hover:scale-125 transition duration-200 ease-in-out cursor-pointer" />
+        <AiOutlinePlusCircle className="text-xl hover:scale-125 transition duration-200 ease-in-out cursor-pointer" />
+        <Image
+          height={200}
+          width={200}
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.braceletbookcdn.com%2Fusers%2F000%2F000%2F009%2F076%2F000000009076%2Fimage.jpg&f=1&nofb=1&ipt=5c65b538c9355a0aa5e864a1466e97388ef011a65c41b4ae673528dc23166b39&ipo=images"
+          alt="User Profile Picture"
+          className="h-10 w-10 object-contain rounded-full cursor-pointer"
+        />
       </div>
     </div>
   );
