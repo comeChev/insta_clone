@@ -21,10 +21,8 @@ export default function Stories() {
   }, []);
 
   return (
-    <div className="max-width-6xl mx-auto py-4">
-      <ul className="flex gap-3 justify-center items-center overflow-hidden p-4">
-        {storyUsers && storyUsers.map((user) => <Story user={user} />)}
-      </ul>
-    </div>
+    <ul className="flex justify-center items-center  mx-auto p-6 mt-8 space-x-4 bg-white rounded overflow-scroll hide-scrollbar">
+      {storyUsers && storyUsers.map((user) => <Story user={user} />)}
+    </ul>
   );
 }
