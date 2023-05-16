@@ -24,7 +24,12 @@ export default function PostCommentForm() {
         value={comment}
         className="border-none focus:ring-2 ring-blue-700 flex-1 rounded mx-4"
       />
-      <button className="text-blue-500 cursor-pointer">Post</button>
+      <button
+        className="text-blue-500 cursor-pointer disabled:opacity-50 disabled:text-gray-400 disabled:cursor-not-allowed"
+        disabled={!comment.trim()}
+      >
+        Post
+      </button>
     </form>
   );
 }

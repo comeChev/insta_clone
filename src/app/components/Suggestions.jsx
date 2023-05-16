@@ -7,7 +7,6 @@ import UserProfile from "./UserProfile";
 
 export default function Suggestions() {
   const [suggestions, setSuggestions] = useState([]);
-  console.log(suggestions);
   useEffect(() => {
     const suggestions = miniFaker.array(5, (i) => {
       return {
@@ -29,7 +28,7 @@ export default function Suggestions() {
         <button className="text-gray-600 font-semibold">See all</button>
       </div>
       {suggestions.map((suggestion) => (
-        <UserProfile user={suggestion} />
+        <UserProfile key={suggestion.id} user={suggestion} />
       ))}
     </div>
   );
