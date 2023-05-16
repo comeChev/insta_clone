@@ -13,7 +13,7 @@ export default function Stories() {
       return {
         id: i,
         username: username({ locale: "en" }).toLowerCase(),
-        img: `https://i.pravatar.cc/150?img=${i}`,
+        img: `https://i.pravatar.cc/150?img=${Math.ceil(Math.random() * 70)}`,
       };
     });
     setStoryUsers(storyUsers);
