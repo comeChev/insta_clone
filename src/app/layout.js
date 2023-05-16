@@ -1,3 +1,4 @@
+import Header from "./components/Header";
 import "./globals.css";
 
 export const metadata = {
@@ -10,6 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {/* Header */}
+        <Header />
         {/* Feed section */}
         {children}
         {/* Modal */}
