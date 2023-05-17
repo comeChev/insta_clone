@@ -2,7 +2,10 @@ import NextAuth from "next-auth/next";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
-const handler = NextAuth({
+export const authOptions = {
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     // GitHubProvider({
     //   clientId: process.env.GITHUB_CLIENT_ID,
@@ -13,6 +16,5 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-});
-
-export { handler as GET, handler as POST };
+  pages: { signIn: "/auth/signin" },
+};

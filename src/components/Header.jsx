@@ -4,6 +4,7 @@ import {
   AiOutlinePlusCircle,
   AiOutlineSearch,
 } from "react-icons/ai";
+import { LoginButton } from "./buttons.component";
 
 export default function Header() {
   return (
@@ -50,6 +51,7 @@ export default function Header() {
             alt="User Profile Picture"
             className="h-10 w-10 object-contain rounded-full cursor-pointer"
           />
+          <LoginButton />
         </div>
       </div>
     </div>
