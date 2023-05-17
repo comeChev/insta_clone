@@ -22,7 +22,7 @@ export default function Suggestions() {
   }, []);
 
   return (
-    <div className="mt-4 ml-10">
+    <div className="mt-4 ml-10 mr-5">
       <div className="flex justify-between items-center text-sm mb-5">
         <h3 className="font-bold text-gray-400">Suggestions for you</h3>
         <button className="text-gray-600 font-semibold">See all</button>

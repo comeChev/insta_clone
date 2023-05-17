@@ -17,26 +17,25 @@ export default async function SignIn() {
         height={400}
         width={400}
         alt="Loving Instagram"
-        className="hidden object-cover rotate-6 md:inline-flex "
+        className="h-auto w-auto hidden object-cover rotate-6 md:inline-flex "
       />
       <div>
-        {Object.values(providers).map((provider) => (
-          <div
-            className="flex flex-col justify-center items-center"
-            key={provider.name}
-          >
-            <Image
-              height={200}
-              width={200}
-              src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngplay.com%2Fwp-content%2Fuploads%2F1%2FInstagram-Logo-Transparent-Image.png&f=1&nofb=1&ipt=3f7b73f1f0153a1d43d5673c19bc2703a967302055cdebc5d2169cdc618fba2f&ipo=images"
-              className="w-32 object-cover"
-            />
-            <p className="text-sm italic my-10 text-gray-600">
-              This app is created for learning purposes
-            </p>
+        <div className="flex flex-col justify-center items-center">
+          <Image
+            height={200}
+            width={200}
+            src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngplay.com%2Fwp-content%2Fuploads%2F1%2FInstagram-Logo-Transparent-Image.png&f=1&nofb=1&ipt=3f7b73f1f0153a1d43d5673c19bc2703a967302055cdebc5d2169cdc618fba2f&ipo=images"
+            alt="Instagram Logo"
+            className="w-32 object-cover"
+          />
+          <p className="text-sm italic my-10 text-gray-600">
+            This app is created for learning purposes
+          </p>
+
+          {Object.values(providers).map((provider) => (
             <ButtonAuthProvider name={provider.name} id={provider.id} />
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

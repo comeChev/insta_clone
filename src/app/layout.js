@@ -1,10 +1,9 @@
 import { Session } from "next-auth";
 import { headers } from "next/headers";
-import AuthContext from "../components/AuthContext";
+import AuthContext from "../lib/AuthContext";
 import Header from "../components/Header";
 import "./globals.css";
 import { NextAuthProvider } from "./providers";
-import User from "@/components/user.component";
 
 export const metadata = {
   title: "Instagram Clone",
@@ -17,7 +16,6 @@ export default async function RootLayout({ children }) {
       <body>
         <NextAuthProvider>
           <Header />
-          <User />
           {/* Header */}
           {/* Feed section */}
           {children}

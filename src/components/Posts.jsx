@@ -12,7 +12,7 @@ export default function Posts() {
         "At least, I can try to save you Zelda ... again ! Here I come !",
     },
     {
-      id: 1,
+      id: 2,
       username: "zelda@hyrule",
       userImg:
         "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.explicit.bing.net%2Fth%3Fid%3DOIP.fk4RchY9ODDcisfiT9evIgHaHa%26pid%3DApi&f=1&ipt=2cf9108359a66df1d1cd1dd31d5c613e387931483c6e24689e8d7ef05ed6715b&ipo=images",
