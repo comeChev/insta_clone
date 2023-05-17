@@ -6,7 +6,6 @@ import Image from "next/image";
 
 export default function SessionLog() {
   const { data: session, status } = useSession();
-  console.log(session);
   return (
     <>
       {/* <p>{JSON.stringify(session)}</p> */}

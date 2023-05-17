@@ -5,6 +5,7 @@ import {
   AiOutlineSearch,
 } from "react-icons/ai";
 import SessionLog from "./SessionLog";
+import AddPost from "./AddPost";
 
 export default function Header() {
   return (
@@ -43,7 +44,7 @@ export default function Header() {
         {/* Menu right side */}
         <div className="flex items-center gap-4">
           <AiFillHome className="hidden md:flex text-xl hover:scale-125 transition duration-200 ease-in-out cursor-pointer" />
-          <AiOutlinePlusCircle className="text-xl hover:scale-125 transition duration-200 ease-in-out cursor-pointer" />
+          <AddPost />
           <SessionLog />
         </div>
       </div>

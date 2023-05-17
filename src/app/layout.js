@@ -4,6 +4,8 @@ import AuthContext from "../lib/AuthContext";
 import Header from "../components/Header";
 import "./globals.css";
 import { NextAuthProvider } from "./providers";
+import UploadModal from "@/components/UploadModal";
+import { RecoilContext } from "@/lib/RecoilContext";
 
 export const metadata = {
   title: "Instagram Clone",
@@ -15,11 +17,14 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
         <NextAuthProvider>
-          <Header />
-          {/* Header */}
-          {/* Feed section */}
-          {children}
-          {/* Modal */}
+          <RecoilContext>
+            <Header />
+            {/* Header */}
+            {/* Feed section */}
+            {children}
+            {/* Modal */}
+            <UploadModal />
+          </RecoilContext>
         </NextAuthProvider>
       </body>
     </html>
