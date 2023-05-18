@@ -5,9 +5,11 @@ import { useRecoilState } from "recoil";
 
 export default function AddPost() {
   const [open, setOpen] = useRecoilState(modalState);
+
   function handleClick() {
-    setOpen(!open);
+    setOpen(true);
   }
+
   return (
     <AiOutlinePlusCircle
       onClick={handleClick}
