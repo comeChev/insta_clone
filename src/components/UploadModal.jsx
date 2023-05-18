@@ -33,7 +33,7 @@ export default function UploadModal() {
 
   async function uploadPost() {
     if (loading) return;
-    //setLoading(true);
+    setLoading(true);
     //uploading data to firestore
     const docRef = await addDoc(collection(db, "posts"), {
       caption: captionPost,
@@ -44,16 +44,19 @@ export default function UploadModal() {
     //creating a reference to the image in firebase storage
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
     //uploading image to firebase storage
-    await uploadString(imageRef, selectedFile, "data_url").then(
-      async (snapshot) => {
+    await uploadString(imageRef, selectedFile, "data_url")
+      .then(async (snapshot) => {
         //getting the download url of the image
         const downloadURL = await getDownloadURL(imageRef);
         //updating the image url in firestore
         await updateDoc(doc(db, "posts", docRef.id), {
           imagePost: downloadURL,
         });
-      }
-    );
+      })
+      .then(() => {
+        closeModal();
+        setLoading(false);
+      });
   }
 
   function addImageToPost(e) {

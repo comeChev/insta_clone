@@ -8,7 +8,7 @@ import {
 } from "react-icons/bs";
 import PostCommentForm from "./PostCommentForm";
 
-export default function Post({ post }) {
+export default function Post({ post, id }) {
   return (
     <div className="my-8">
       {/* Post Header */}
@@ -16,19 +16,20 @@ export default function Post({ post }) {
         <Image
           height={60}
           width={60}
-          src={post.userImg}
+          src={post.profilePic}
           alt={post.username}
           className="h-8 w-8 rounded-full object-cover border"
         />
         <p className="text-sm font-bold text-gray-600 flex-1">
           {post.username}
         </p>
+        {/* <p>{post.timestamp}</p> */}
         <BsThreeDots className="text-xl cursor-pointer" />
       </div>
 
       {/* Post Image */}
       <Image
-        src={post.img}
+        src={post.imagePost}
         height={300}
         width={600}
         alt={post.caption}

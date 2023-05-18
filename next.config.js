@@ -5,6 +5,7 @@ const nextConfig = {
       "external-content.duckduckgo.com",
       "i.pravatar.cc",
       "lh3.googleusercontent.com",
+      "firebasestorage.googleapis.com",
     ],
   },
 };
