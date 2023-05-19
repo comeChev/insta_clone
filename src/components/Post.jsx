@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   BsThreeDots,
@@ -7,8 +9,10 @@ import {
   BsEmojiSmile,
 } from "react-icons/bs";
 import PostCommentForm from "./PostCommentForm";
+import { useSession } from "next-auth/react";
 
 export default function Post({ post, id }) {
+  const { data: session } = useSession();
   return (
     <div className="my-8">
       {/* Post Header */}
@@ -37,13 +41,16 @@ export default function Post({ post, id }) {
       />
 
       {/* Buttons  */}
-      <div className="flex justify-between items-center p-4">
-        <div className="flex space-x-4">
-          <BsHeart className="btn-post" />
-          <BsChatLeftDots className="btn-post" />
+      {/* Only visible once connected */}
+      {session && (
+        <div className="flex justify-between items-center p-4">
+          <div className="flex space-x-4">
+            <BsHeart className="btn-post" />
+            <BsChatLeftDots className="btn-post" />
+          </div>
+          <BsBookmark className="btn-post" />
         </div>
-        <BsBookmark className="btn-post" />
-      </div>
+      )}
 
       {/* Caption */}
 
@@ -53,7 +60,10 @@ export default function Post({ post, id }) {
       </p>
 
       {/* Post input comment */}
-      <PostCommentForm />
+      {/* Only visible once connected */}
+      {session && (
+        <PostCommentForm placeholder="Add a comment..." disabled={!session} />
+      )}
     </div>
   );
 }

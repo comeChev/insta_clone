@@ -3,6 +3,7 @@ import dummyPosts from "../../public/dummyData.json";
 import { useState, useEffect } from "react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase";
+import { BiLoaderAlt } from "react-icons/bi";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -16,12 +17,20 @@ export default function Posts() {
       }
     );
     setLoading(false);
-  }, []);
+  }, [db]);
 
   return (
     <div className="">
       {loading ? (
-        <p>Loading...</p>
+        <div className="w-full flex justify-center items-center mt-20 ">
+          <button
+            className="bg-indigo-500 text-white rounded-md flex items-center px-3 py-2.5 shadow-md"
+            disabled
+          >
+            <BiLoaderAlt className="animate-spin text-2xl mr-3" />
+            Processing...
+          </button>
+        </div>
       ) : posts.length > 0 ? (
         posts.map((post) => (
           <Post key={post.id} id={post.id} post={post.data()} />
