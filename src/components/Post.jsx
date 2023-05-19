@@ -10,16 +10,59 @@ import {
 } from "react-icons/bs";
 import PostCommentForm from "./PostCommentForm";
 import { useSession } from "next-auth/react";
+import PostComments from "./PostComments";
+import { Link } from "next/link";
+import ImagePost from "./ImagePost";
+import { useRecoilState } from "recoil";
+import {
+  modalViewComments,
+  modalViewPost,
+  postViewModalState,
+} from "@/lib/atom/modalAtom";
+import { useEffect, useState } from "react";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { db } from "../../firebase";
 
-export default function Post({ post, id }) {
+export default function Post({ post, idPost }) {
   const { data: session } = useSession();
+  const [open, setIsOpen] = useRecoilState(postViewModalState);
+  const [currentPost, setCurrentPost] = useRecoilState(modalViewPost);
+  const [comments, setComments] = useState([]);
+
+  function handleClick() {
+    setOpen(true);
+  }
+
+  useEffect(() => {
+    //fetch comments from firestore
+    const unsubscribe = onSnapshot(
+      query(
+        collection(db, "posts", idPost, "comments"),
+        orderBy("timestamp", "desc")
+      ),
+      (snapshot) => {
+        setComments(
+          snapshot.docs.map((doc) => {
+            const data = { ...doc.data(), id: doc.id };
+            return data;
+          })
+        );
+      }
+    );
+  }, []);
+
+  function handleOpenModal() {
+    setCurrentPost({ ...post, comments: comments });
+    setIsOpen(true);
+  }
+
   return (
     <div className="my-8">
       {/* Post Header */}
       <div className="flex space-x-2 items-center mb-3 px-5 py-2">
         <Image
-          height={60}
-          width={60}
+          height={40}
+          width={40}
           src={post.profilePic}
           alt={post.username}
           className="h-8 w-8 rounded-full object-cover border"
@@ -32,13 +75,13 @@ export default function Post({ post, id }) {
       </div>
 
       {/* Post Image */}
-      <Image
-        src={post.imagePost}
-        height={300}
-        width={600}
-        alt={post.caption}
-        className="rounded mx-auto w-full"
-      />
+      <div onClick={handleOpenModal}>
+        <ImagePost
+          id={idPost}
+          caption={post.caption}
+          imagePost={post.imagePost}
+        />
+      </div>
 
       {/* Buttons  */}
       {/* Only visible once connected */}
@@ -58,11 +101,16 @@ export default function Post({ post, id }) {
         <span className="font-bold mr-2">{post.username}</span>
         {post.caption}
       </p>
+      {comments && <PostComments comments={comments} />}
 
       {/* Post input comment */}
       {/* Only visible once connected */}
       {session && (
-        <PostCommentForm placeholder="Add a comment..." disabled={!session} />
+        <PostCommentForm
+          placeholder="Add a comment..."
+          disabled={!session}
+          postId={idPost}
+        />
       )}
     </div>
   );

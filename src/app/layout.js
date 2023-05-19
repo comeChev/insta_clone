@@ -1,11 +1,12 @@
+import "./globals.css";
 import { Session } from "next-auth";
 import { headers } from "next/headers";
 import AuthContext from "../lib/AuthContext";
 import Header from "../components/Header";
-import "./globals.css";
 import { NextAuthProvider } from "./providers";
 import UploadModal from "@/components/UploadModal";
 import { RecoilContext } from "@/lib/RecoilContext";
+import PostViewModal from "@/components/PostViewModal";
 
 export const metadata = {
   title: "Instagram Clone",
@@ -24,6 +25,7 @@ export default async function RootLayout({ children }) {
             {children}
             {/* Modal */}
             <UploadModal />
+            <PostViewModal />
           </RecoilContext>
         </NextAuthProvider>
       </body>

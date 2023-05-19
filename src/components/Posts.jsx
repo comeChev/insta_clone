@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../../firebase";
 import { BiLoaderAlt } from "react-icons/bi";
+import Link from "next/link";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -18,7 +19,6 @@ export default function Posts() {
     );
     setLoading(false);
   }, [db]);
-
   return (
     <div className="">
       {loading ? (
@@ -33,7 +33,7 @@ export default function Posts() {
         </div>
       ) : posts.length > 0 ? (
         posts.map((post) => (
-          <Post key={post.id} id={post.id} post={post.data()} />
+          <Post key={post.id} idPost={post.id} post={post.data()} />
         ))
       ) : (
         <div>No posts to show at this time !</div>
