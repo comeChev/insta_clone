@@ -32,8 +32,12 @@ export default async function SignIn() {
             This app is created for learning purposes
           </p>
 
-          {Object.values(providers).map((provider) => (
-            <ButtonAuthProvider name={provider.name} id={provider.id} />
+          {Object.values(providers).map((provider, index) => (
+            <ButtonAuthProvider
+              key={index}
+              name={provider.name}
+              id={provider.id}
+            />
           ))}
         </div>
       </div>
