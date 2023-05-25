@@ -55,8 +55,8 @@ export default async function page({ params }) {
         <p className="flex-1">{post.caption}</p>
 
         <div>
-          {comments.map((comment) => (
-            <p>{comment.comment}</p>
+          {comments.map((comment, id) => (
+            <p key={id}>{comment.comment}</p>
           ))}
         </div>
       </div>

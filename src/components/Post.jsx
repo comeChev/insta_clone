@@ -96,24 +96,6 @@ export default function Post({ post, idPost }) {
     setHasLiked(likeExists);
   }
 
-  // useEffect(() => {
-  //   //fetch comments from firestore
-  //   const unsubscribe = onSnapshot(
-  //     query(
-  //       collection(db, "posts", idPost, "comments"),
-  //       orderBy("timestamp", "desc")
-  //     ),
-  //     (snapshot) => {
-  //       setComments(
-  //         snapshot.docs.map((doc) => {
-  //           const data = { ...doc.data(), id: doc.id };
-  //           return data;
-  //         })
-  //       );
-  //     }
-  //   );
-  // }, []);
-
   useEffect(() => {
     getLikes();
     getComments();
